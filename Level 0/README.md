@@ -21,3 +21,12 @@ For this challenge we are going to pipe the input using echo -e. We are going to
 $ echo -e "AAAAAAAAAAAAAAAAAAAA\xef\xbe\xad\xde\x00\x00\x00\x00" | ./narnia0  
 Running this command we get the following output:  
 
+<img width="625" alt="Screen Shot 2024-01-12 at 1 55 15 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/3b920eb7-bdad-4ba8-9d95-52db017550ed">
+
+This shows that our value is correct so the “system("/bin/sh")” is getting executed but not remaining open and allowing us to enter commands.  
+We can solve this issue by appending a “cat” command at the end of our payload which will keep the shell open.  
+Using the following command:  
+$ (echo -e "AAAAAAAAAAAAAAAAAAAA\xef\xbe\xad\xde\x00\x00\x00\x00"; cat;) | ./narnia0  
+We get our shell on the system to remain open and allow us to enter commands freely.   
+We can check to make sure we have a shell by entering the command “whoami” which will show us we are now narnia1.  
+
