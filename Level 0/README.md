@@ -30,3 +30,31 @@ $ (echo -e "AAAAAAAAAAAAAAAAAAAA\xef\xbe\xad\xde\x00\x00\x00\x00"; cat;) | ./nar
 We get our shell on the system to remain open and allow us to enter commands freely.   
 We can check to make sure we have a shell by entering the command “whoami” which will show us we are now narnia1.  
 
+<img width="627" alt="Screen Shot 2024-01-12 at 1 56 26 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/b408f335-0eb5-45a6-83eb-0e203483f464">
+
+Now that we have our shell we are not exactly sure what to do. The challenge description does not provide much direction besides that the data for the levels is found in /narnia/.  
+We do know that we are looking for the password for narnia1 so that we can move onto the next level. Knowing this we can start looking in the /etc/ directory given that when looking for a password this can be a good place to start.   
+$ cd /etc/  
+$ ls   
+Upon looking through the files in directories stored here we find a directory named narnia_pass  
+and upon switching to this directory we can see that the passwords for each level are stored here.  
+If you were to try and “cat” any of these passwords currently you would get a permission denied error assuming that only the respective user can look at their own passwords.  
+Now we know the command we want to execute once we get a shell on the system is:  
+$ cat /etc/narnia_pass/narnia1  
+Now upon obtaining our shell using the same command as before:  
+$ (echo -e "AAAAAAAAAAAAAAAAAAAA\xef\xbe\xad\xde\x00\x00\x00\x00"; cat;) | ./narnia0  
+We can now obtain the password for the next level.  
+
+<img width="627" alt="Screen Shot 2024-01-12 at 1 57 20 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/bb0bde90-4ce6-4d4c-8c1d-032fac508f2b">
+
+Pass: eaa6AjYMBB
+
+
+
+
+
+
+
+
+
+
