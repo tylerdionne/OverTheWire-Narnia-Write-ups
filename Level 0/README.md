@@ -1,3 +1,4 @@
+# Level 0
 ssh narnia0@narnia.labs.overthewire.org -p 2226
 Pass: narnia0
 We are told that the data for the levels can be found in /narnia/ so we switch to this directory using the command.
