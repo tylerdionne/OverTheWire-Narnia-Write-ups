@@ -1,2 +1,4 @@
-My write-ups to the exploitation challenges on OverTheWire: Narnia.
+OverTheWire: Narnia Exploitation Series Write-ups.
+
+
 
