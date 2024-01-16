@@ -1,7 +1,7 @@
 # Level 4 -> Level 5  
 ssh narnia4@narnia.labs.overthewire.org -p 2226  
 Pass: aKNxxrpDc1  
-An initial run of the bianry shows the following:
+An initial run of the bianry shows the following:  
 <img width="452" alt="Screen Shot 2024-01-16 at 6 33 05 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/f775fc2b-ef51-42a6-b0ea-f3f1c488e86c">
 
 Looking at the C source file we see some notable lines of code.  
