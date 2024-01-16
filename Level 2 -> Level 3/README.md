@@ -1,7 +1,7 @@
 # Level 2 -> Level 3
 ssh narnia2@narnia.labs.overthewire.org -p 2226  
 Pass: Zzb6MIyceT  
-First running the binary file normally we see the following output:  
+An initial run of the bianry shows the following:   
 <img width="626" alt="Screen Shot 2024-01-15 at 6 03 28 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/b6f27327-3024-4151-9403-e7983bd95840">
 
 Looking at the C source file we can see that this program takes a command line argument and checks to see if one is provided or not  
