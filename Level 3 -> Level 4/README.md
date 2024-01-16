@@ -17,11 +17,11 @@ Anything following "/tmp/AAAAAAAAAAAAAAAAAAAAAAAAAAA" will overwrite the data st
 We see that read() and write() are used to copy the contents from "ifile" to "ofile".  
 In general the C function read() reads the contents of a file and stores it in the buffer and the C function write() writes the contents of the buffer to a file. 
 
-The goal of this challenge is to use the buffer overflow vulnerability to read the contents of the password file for the next level (/etc/narnia_pass/narnia4) and write it to a file that we have access to.
-For this challenge we will be creating files/directories in the /tmp directory because this is one of the only directories we have write permissions to on the server.
-The final result we want to achieve is the following:
-"ifile" -> /tmp/AAAAAAAAAAAAAAAAAAAAAAAAAAA/tmp/passwd
-"ofile" -> /tmp/passwd
+The goal of this challenge is to use the buffer overflow vulnerability to read the contents of the password file for the next level (/etc/narnia_pass/narnia4) and write it to a file that we have access to.  
+For this challenge we will be creating files/directories in the /tmp directory because this is one of the only directories we have write permissions to on the server.  
+The final result we want to achieve is the following:  
+"ifile" -> /tmp/AAAAAAAAAAAAAAAAAAAAAAAAAAA/tmp/passwd  
+"ofile" -> /tmp/passwd  
 
 First we must create a directory named "/tmp/AAAAAAAAAAAAAAAAAAAAAAAAAAA/tmp".  
 We can then create the output file where we want the password to be stored, for this instance I will use "/tmp/passwd".  
