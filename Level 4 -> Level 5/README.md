@@ -22,7 +22,7 @@ pwndbg ./narnia4
 (gdb) r aaaabaaacaaadaaaeaaafaaagaaahaaaiaaajaaakaaalaaamaaanaaaoaaapaaaqaaaraaasaaataaauaaavaaawaaaxaaayaaazaabbaabcaabdaabeaabfaabgaabhaabiaabjaabkaablaabmaabnaaboaabpaabqaabraabsaabtaabuaabvaabwaabxaabyaabzaacbaaccaacdaaceaacfaacgaachaaciaacjaackaaclaacmaacnaacoaacpaacqaacraacsaactaacuaacvaacwaacxaacyaac  
 (gdb) c  
 (gdb) cyclic -l 0x63616171  
-We see the following:
+We see the following:  
 <img width="627" alt="Screen Shot 2024-01-16 at 6 43 58 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/1d155c52-87c2-48e3-945b-2d0aa36717d2">  
 
 This confirms that the offset is 264 bytes.  
