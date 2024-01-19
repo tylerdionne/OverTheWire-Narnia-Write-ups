@@ -20,4 +20,5 @@ $ ./narnia5 AAAAAAAAAAA%x
 <img width="586" alt="Screen Shot 2024-01-18 at 11 21 41 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/f6bf1cb3-e598-49f6-85a7-bf1b91afe791">  
 
 From this we have confirmed that the program has a format string vulnerability and we see that our %x argument read our A's (x41) stored on the stack.  
-This also shows that the %x starts reading from the start of the buffer.
+This also shows that the %x starts reading from the start of the buffer.  
+The goal of this challenge is to exploit the format string vulnerability to write to an address we provide in the format string.  
