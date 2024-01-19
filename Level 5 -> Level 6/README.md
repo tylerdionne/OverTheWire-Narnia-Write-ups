@@ -14,4 +14,7 @@ snprintf(buffer, sizeof buffer, argv[1]);
 Where "buffer" is the destination buffer, sizeof buffer is the maximum size of the buffer, and argv[1] is the format string and any additional arguments to be formatted are not shown but are expected based upon the content of the format string.
 The point of the snprintf function is to format a string based upon the arguments provided in the format string and then store that formatted string in the provided destination buffer. 
 
-
+So understanding this we should be able to provide some %x arguments in the format string which should allow us to view the data on the stack.  
+To start we can send the following payload:  
+$ ./narnia5 AAAAAAAAAAA%x
+<img width="586" alt="Screen Shot 2024-01-18 at 11 21 41 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/f6bf1cb3-e598-49f6-85a7-bf1b91afe791">
