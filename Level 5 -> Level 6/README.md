@@ -8,6 +8,7 @@ Looking at the C source file we see that if we are able to change the value of i
 We do not see a strcpy like the other challenges so there is not a buffer overflow vulnerability in this program.  
 We see that the function snprintf is used. This function is known to have a format string vulnerability when user input is not sanitized properly.
 In this example we can see that we control the third argument to the snprintf function which is the format string.
+
 To understand this function we can look at our example in this program: 
 snprintf(buffer, sizeof buffer, argv[1]);
 Where "buffer" is the destination buffer, sizeof buffer is the maximum size of the buffer, and argv[1] is the format string and any additional arguments to be formatted are not shown but are expected based upon the content of the format string.
