@@ -6,4 +6,6 @@ An initial run of the bianry shows the following:
 
 Looking at the C source file we see that if we are able to change the value of i from 1 to 500 we get a shell.  
 We do not see a strcpy like the other challenges so there is not a buffer overflow vulnerability in this program.  
-We see that the function snprintf is used. This function is known to have a format string vulnerability.  
+We see that the function snprintf is used. This function is known to have a format string vulnerability when user input is not sanitized properly.
+
+
