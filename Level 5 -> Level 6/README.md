@@ -23,4 +23,3 @@ From this we have confirmed that the program has a format string vulnerability a
 This also shows that the %x starts reading from the start of the buffer.  
 The goal of this challenge is to exploit the format string vulnerability to write to an address we provide in the format string.  
 We know the address we want to write is 0xffffd520 and we know the value we want to write it with is 500.  
-To write this memory address we can use the special %n format specifier which essentially takes the number of characters up to the point of the %n and writes that value to the memory address provided in the following argument for the %n.  
