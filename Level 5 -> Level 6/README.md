@@ -9,10 +9,12 @@ We do not see a strcpy like the other challenges so there is not a buffer overfl
 We see that the function snprintf is used. This function is known to have a format string vulnerability when user input is not sanitized properly.
 In this example we can see that we control the third argument to the snprintf function which is the format string.
 
-To understand this function we can look at our example in this program: 
-snprintf(buffer, sizeof buffer, argv[1]);
-Where "buffer" is the destination buffer, sizeof buffer is the maximum size of the buffer, and argv[1] is the format string and any additional arguments to be formatted are not shown but are expected based upon the content of the format string.
-The point of the snprintf function is to format a string based upon the arguments provided in the format string and then store that formatted string in the provided destination buffer. 
+First we must understand this function.   
+Essentially snprintf does the same thing as printf but instead of printing the formatted string it stores it in the buffer pointed to by the first argument and uses the second argument as the maximum size allowed to be stored in that buffer.
+The thrid argument is the format string (which we control). Based upon the format string provided for this argument the function will then expect an additional # of arguments.
+
+
+
 
 So understanding this we should be able to provide some %x arguments in the format string which should allow us to view data on the stack.  
 To start we can send the following payload:  
