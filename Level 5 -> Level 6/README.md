@@ -21,6 +21,6 @@ From this we can see that we can indeed read data from the stack and in fact the
 The goal of this challenge is to exploit the format string vulnerability to write to an address we provide in the format string.  
 We know the address we want to write is 0xffffd520 and we know the value we want to write it with is 500.  
 To do this we can use %n which writes the number of characters printed up to that point to a given address. 
-It is usually used to update integer variables, for example:
+It is usually used to update integer variables, for example:  
 printf("Hello, %nWorld!\n", &count);  
 Should write 7 to the count variable.  
