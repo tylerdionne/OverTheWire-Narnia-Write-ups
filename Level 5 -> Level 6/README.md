@@ -13,7 +13,7 @@ First we must understand this function.
 Essentially snprintf does the same thing as printf but instead of printing the formatted string it stores it in the buffer pointed to by the first argument and uses the second argument as the maximum size allowed to be stored in that buffer.
 The thrid argument is the format string (which we control). Based upon the format string provided for this argument the function will then expect an additional # of arguments.
 
-Now that we know that the snprintf function takes a format string that we control we can try to pass some %x's to see if we can read data from the stack. 
+Now that we know that the snprintf function takes a format string that we control we can try to pass some %x's to see if we can read data from the stack.   
 $ ./narnia5 AAAA%x  
 <img width="532" alt="Screen Shot 2024-01-28 at 10 21 36 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/8f7965b5-6479-4fd5-8c04-1ee83df60df7">  
 
