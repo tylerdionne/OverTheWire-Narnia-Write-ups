@@ -20,3 +20,4 @@ $ ./narnia5 AAAA%x
 From this we can see that we can indeed read data from the stack and in fact the %x starts reading from the beginning of the buffer, in this case it reads the 4 A's.  
 The goal of this challenge is to exploit the format string vulnerability to write to an address we provide in the format string.  
 We know the address we want to write is 0xffffd520 and we know the value we want to write it with is 500.  
+To this we can use %n which 
