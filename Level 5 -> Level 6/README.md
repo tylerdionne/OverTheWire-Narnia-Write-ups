@@ -13,21 +13,10 @@ First we must understand this function.
 Essentially snprintf does the same thing as printf but instead of printing the formatted string it stores it in the buffer pointed to by the first argument and uses the second argument as the maximum size allowed to be stored in that buffer.
 The thrid argument is the format string (which we control). Based upon the format string provided for this argument the function will then expect an additional # of arguments.
 
-Now that we know that the snprintf function takes a format string that we control we can try to pass some %x's to see if we can read data from the stack.  
+Now that we know that the snprintf function takes a format string that we control we can try to pass some %x's to see if we can read data from the stack. 
+$ ./narnia5 AAAA%x  
 <img width="532" alt="Screen Shot 2024-01-28 at 10 21 36 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/8f7965b5-6479-4fd5-8c04-1ee83df60df7">  
 
 From this we can see that we can indeed read data from the stack and in fact the %x starts reading from the beginning of the buffer, in this case it reads the 4 A's.  
-
-   
-
-
-
-So understanding this we should be able to provide some %x arguments in the format string which should allow us to view data on the stack.  
-To start we can send the following payload:  
-$ ./narnia5 AAAAAAAAAAA%x  
-<img width="586" alt="Screen Shot 2024-01-18 at 11 21 41 PM" src="https://github.com/tylerdionne/OverTheWire-Narnia-Write-ups/assets/143131384/f6bf1cb3-e598-49f6-85a7-bf1b91afe791">  
-
-From this we have confirmed that the program has a format string vulnerability and we see that our %x argument read our A's (x41) stored on the stack.  
-This also shows that the %x starts reading from the start of the buffer.  
 The goal of this challenge is to exploit the format string vulnerability to write to an address we provide in the format string.  
 We know the address we want to write is 0xffffd520 and we know the value we want to write it with is 500.  
