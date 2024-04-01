@@ -8,3 +8,4 @@ Looking at the C source file we see several important pieces.
 The first important piece we see is the assembly instructions. We see that these instructions are in At&t syntax which is in the form operation source, dest.  
 Note that for At&t syntax % is used for registers and $ is used for immediate values.
 We see that these instructions inside of the get_sp method mov a long "movl" from esp to eax and then performs an "and" operation on eax with the value 0xff000000.  
+The second key piece of information is that we see the use strcpy which is a known dangerous C function because it does not perform boundary checking so it is vulenrable to buffer overflows. We see that we provide two command line arguments which are copied into two arrays of size 8. 
