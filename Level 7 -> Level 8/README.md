@@ -6,3 +6,4 @@ An initial run of the binary shows the following:
 
 Looking at the C source file we see several important pieces.  First we see that our command line argument is taken in and then used as the first argument to the vuln function and then used as the format string. We know that when the user is able to control the format string in a function like snprintf() this is a format string vulnerability. We see that we want to find a way to call the hackedfunction() because this gives us a shell.  
 
+We see that the variable ptrf is set to the address of "goodfunction". We want to change the value of this variable by writing it with the address of the hacked function. We can use a format string vulnerability exploit similar to the one we used in level 5 to do so. The program prints out the address of the ptrf variable for us and this is the address we want to write to. It also prints out the address of the hackedfunction so we have all the info we need.  
