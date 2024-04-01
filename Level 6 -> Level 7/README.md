@@ -15,3 +15,13 @@ We see the line:
 int  (*fp)(char *)=(int(*)(char *))&puts, i;
 This creates a function pointer "fp" which points at the puts() function.
 So after this whatever is passed to "fp" will be printed to the console via puts().
+
+If we can get fp to point at something like "system" and then pass a /bin/sh to it we can get a shell.  
+So we want to grab the memory address of the system function in the libc library of the binary which we can do using gdb.  
+$ gdb ./narnia6  
+(gdb) break main   
+(gdb) r  
+(gdb) p system   
+This sequence of commands gives us the following line of output:  
+$1 = {int (const char *)} 0xf7c48170 <__libc_system>  
+So now we now that 0xf7c48170 is the address that points to system() in the libc library.   
