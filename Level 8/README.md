@@ -6,3 +6,5 @@ An initial run of the binary shows the following:
 
 In the C source file we see that the program takes a command line argument and then passes it to func.  
 We see that we are basically copying the character array we pass into the program into "bok" until it hits a null byte. We see that "bok" is allocated 20 bytes.  It is clear that there is a buffer overflow vulnerability because the string we input does not have to stop at 20 bytes but after that "bok" will be full and the next address will be pointing at blah and or the thing we are copying from. If we change the value of this then it will try to read from an invalid memory address and most likely give us a segfault so we want to keep this as what it is.  
+
+So basically we want to 1. overwrite bok with 20 junk bytes 2. address of blah (thing we are copying from) 3. then 8 junk bytes for rbp 4. a jump esp gadget 5. some bin/sh shellcode   
