@@ -10,3 +10,8 @@ Note that for At&t syntax % is used for registers and $ is used for immediate va
 We see that these instructions inside of the get_sp method mov a long "movl" from esp to eax and then performs an "and" operation on eax with the value 0xff000000.  
 
 The second key piece of information is that we see the use strcpy which is a known dangerous C function because it does not perform boundary checking so it is vulenrable to buffer overflows. We see that we provide two command line arguments which are copied into two arrays of size 8. 
+
+We see the line:
+int  (*fp)(char *)=(int(*)(char *))&puts, i;
+This creates a function pointer "fp" which points at the puts() function.
+So after this whatever is passed to "fp" will be printed to the console via puts().
