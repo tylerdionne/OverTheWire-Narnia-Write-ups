@@ -21,7 +21,7 @@ $ ./getenvvaraddr LVL8
 This gives us the following output:  
 addr of LVL8: 0xffffdfa5  
 
-Go into gdb, disassemble func(), set a break point right before exit, run with 20 A's as arg, display 20 values below $esp, get the address after the last 0x41414141 string for me it is (0xffffd790). In our actual payload we will be writing 12 more bytes so we need to subtract 12 from this. 
+Go into gdb, disassemble func(), set a break point right before exit, run with 20 A's as arg, display 20 values below $esp, get the address after the last 0x41414141 string for me it is (0xffffd790). In our actual payload we will be writing 12 more bytes so we need to subtract 12 from this (0xffffd78c).
 
 
 
